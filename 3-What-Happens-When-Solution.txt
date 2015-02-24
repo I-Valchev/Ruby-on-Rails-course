@@ -1,0 +1,57 @@
+After typing "hackbulgaria.com" in your browser, it will first parse the
+string - so the browser would either find that it is a string leading
+to a file written on your hard drive or (our case) it would send a
+request to a server to obtain the information needed. First, there are
+different ways of "asking". The way we require the info from the server
+(in this particular case) is by HTTPS - Hypertext Transfer Protocol 
+Secure. The protocol, basically, allows us to tell the server what kind 
+of data we'd like to obtain and how we want it structured (or, in other 
+words, it is "a request-response protocol in the client-server computing
+model"). So, after the browser identifies the protocol used, it builds 
+the proper request). HTTP(S) has a simple branch of methods/keywords:
+GET, HEAD, POST, PUT, DELETE, TRACE, PATCH, OPTIONS, CONNECT, PATCH
+
+A simple example of a request is given below:
+
+---
+POST /enlighten/calais.asmx HTTP/1.1
+Host: api.opencalais.com
+Content-Type: text/xml; charset=utf-8
+Content-Length: length
+SOAPAction: "http://clearforest.com/Enlighten"
+
+<?xml version="1.0" encoding="utf-8"?>           <-- Formatted as an XML
+<soap:Envelope xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" 
+    xmlns:xsd="http://www.w3.org/2001/XMLSchema" 
+    xmlns:soap="http://schemas.xmlsoap.org/soap/envelope/">
+  <soap:Body>
+  <Enlighten xmlns="http://clearforest.com/">
+  <licenseID>string </licenseID>
+  <content>string</content>
+  <paramsXML>string </paramsXML>
+  </Enlighten>
+  </soap:Body>
+</soap:Envelope>
+---
+
+Once the request is successfully sent and received by the server, the
+server will process it (for example locate the file we requested) and
+form a response in almost the same way the request is formatted. Then,
+it will send a response back to us again using the HTTPS protocol. For
+example, a file will be transferred. If the file is a HTML, PHP & etc.
+file our browser will directly display the document, but if it is a ZIP
+file or if it contains reference to images, Java applets & etc., it
+will process the document using the program configured to use it and not
+try to open it on it's own.
+
+There are several protocol layers thanks to which we have this high
+level access to data:
+Application Protocols Layers (explained)
+Transmission Control Protocol Layer - TCP directs packets to a specific 
+    application on a computer using a port number.
+Internet Protocol Layer - IP directs packets to a specific computer 
+    using an IP address.
+Hardware Layer - Converts binary packet data to network signals and back
+
+That is, basically, what happens when we type "hackbulgaria.com" and
+hit ENTER :)
